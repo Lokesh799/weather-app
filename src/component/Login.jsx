@@ -1,33 +1,56 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { showModel } from '../action';
 import { Modal } from 'react-bootstrap';
+import { getUser } from '../action';
 
 const Login = () => {
-	const [showModel, setModel] = useState(false)
+
+	const dispatch = useDispatch();
+	const show= useSelector((state) => state.modelshow.show)
+	const getuser = useSelector((state) => state.getUser.record)
+	console.log('api data', getuser)
+	// const [showModel, setModel] = useState(false)
+  
 
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [allEntry, setEntry] = useState("");
 
-
-	const handleClose = () => setModel(false);
-	const handleShow = () => setModel(true);
-
-
-	const handleSubmit =(event)=> {
-		event.preventDefault();
-		const newEntry ={username:username , password:password}
-		setEntry([...allEntry,newEntry]);
-		console.log(allEntry)
+	const handleClose = () => {
+		dispatch(showModel(false));
 	}
-  
+	const handleShow = () => {
+		dispatch(showModel(true));
+	}
+
+	// const handleClose = () => setModel(false);
+	// const handleShow = () => setModel(true);
+
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const newEntry = { username: username, password: password }
+		setEntry([...allEntry, newEntry]);
+		// console.log(allEntry)
+
+    if(getuser.length>0){
+			alert("login")
+		}else{
+			alert("check user name");
+		}
+	}
+
+
+
 
 	return (
 		<>
-		  <div>
-			<Button variant="primary" onClick={() => handleShow(true)}>Login</Button>
+			<div>
+				<Button variant="primary" onClick={() => handleShow(true)}>Login</Button>
 			</div>
-			<Modal show={showModel} onHide={handleClose}>
+			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title>LOGIN USER</Modal.Title>
 				</Modal.Header>
@@ -57,9 +80,6 @@ const Login = () => {
 				<Modal.Footer>
 					<Button variant="secondary" onClick={handleClose}>
 						Close
-					</Button>
-					<Button variant="primary">
-						Save Changes
 					</Button>
 				</Modal.Footer>
 			</Modal>
