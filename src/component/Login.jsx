@@ -30,7 +30,7 @@ const Login = () => {
 	const loginApi = (username, password) => {
 		if (username === userDetail.username && password === userDetail.password) {
 			return (
-				history.push('/Dashbord')
+				history.push('/Dashbord')  
 			)
 		} else {
 			alert("invalid Field")
@@ -46,15 +46,6 @@ const Login = () => {
 	useEffect(() => {
 		dispatch(getUSer())
 	}, []);
-
-	// const handleClose = () => setModel(false);
-	// const handleShow = () => setModel(true);
-	// const handleSubmit = (event) => {
-	// 	event.preventDefault();
-	// 	const newEntry = { username: username, password: password }
-	// 	setEntry([...allEntry, newEntry]);
-	// 	// console.log(allEntry)
-	// }
 	return (
 		<>
 			<div>

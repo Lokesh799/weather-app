@@ -1,12 +1,14 @@
 import axios from 'axios';
 import {showCityWheather } from '../action';
 
-export const cityWheatherRequest = () => async (dispatch) => {
+// const API_KEY=a4cc52d312de69912a4a9afc7e264ad2;
+
+export const cityWheatherRequest = (city) => async (dispatch) => {
   try{
-       const API_KEY=f692ee3bb116b9ed27b8079d89651;
-	    axios.get(`api.openweathermap.org/data/2.5/weather?q=${showCity}&appid=${API_KEY}`).then((response) => {
+       
+	    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a4cc52d312de69912a4a9afc7e264ad2`).then((response) => {
           console.log(response)
-        dispatch(showCityWheather(response.data));    
+        dispatch(showCityWheather([response.data]));    
         });
     }catch(err){
       console.log('err', err);
