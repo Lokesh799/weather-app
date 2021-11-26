@@ -30,7 +30,7 @@ const Login = () => {
 	const loginApi = (username, password) => {
 		if (username === userDetail.username && password === userDetail.password) {
 			return (
-				history.push('/Dashbord')  
+				history.push('/Home')
 			)
 		} else {
 			alert("invalid Field")
@@ -45,7 +45,9 @@ const Login = () => {
 	}
 	useEffect(() => {
 		dispatch(getUSer())
-	}, []);
+
+		localStorage.setItem('list', JSON.stringify(userDetail))
+	}, [userDetail]);
 	return (
 		<>
 			<div>

@@ -2,7 +2,7 @@ import { SHOW_CITY, SHOW_WHEATHER } from "../action";
 
 const initialState = {
 	fetchApi: [],
-	city:""
+	city: ""
 }
 const getCity = (state = initialState, action) => {
 	switch (action.type) {
@@ -11,11 +11,11 @@ const getCity = (state = initialState, action) => {
 				...state,
 				city: action.payload,
 			};
-			case SHOW_WHEATHER:
-				return {
-					...state,
-					fetchApi: action.payload,
-				};
+		case SHOW_WHEATHER:
+			return {
+				...state,
+				fetchApi: action.payload,
+			};
 		default:
 			return state;
 	}

@@ -16,6 +16,4 @@ const modelshow = (state = initialState, action) => {
 	}
 }
 
-
-
 export default modelshow;
